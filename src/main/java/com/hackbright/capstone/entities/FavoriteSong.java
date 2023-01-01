@@ -1,6 +1,7 @@
 package com.hackbright.capstone.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.hackbright.capstone.dtos.FavoriteSongDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class FavoriteSong {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JsonBackReference

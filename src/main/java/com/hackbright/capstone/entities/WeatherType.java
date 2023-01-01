@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.hackbright.capstone.dtos.WeatherTypeDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,4 +18,10 @@ public class WeatherType {
 
     @Column
     private String weatherType;
+
+    public WeatherType(WeatherTypeDto weatherTypeDto) {
+        if (weatherTypeDto.getWeatherType() != null) {
+            this.weatherType = weatherTypeDto.getWeatherType();
+        }
+    }
 }

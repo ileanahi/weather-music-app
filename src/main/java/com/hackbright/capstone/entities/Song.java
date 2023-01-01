@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.hackbright.capstone.dtos.SongDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +27,16 @@ public class Song {
 
     @OneToOne(mappedBy = "song")
     private FavoriteSong favoriteSong;
+
+    public Song(SongDto songDto) {
+        if (songDto.getTitle() != null) {
+            this.title = songDto.getTitle();
+        }
+        if (songDto.getArtist() != null) {
+            this.artist = songDto.getArtist();
+        }
+        if (songDto.getAlbumArt() != null) {
+            this.albumArt = songDto.getAlbumArt();
+        }
+    }
 }
