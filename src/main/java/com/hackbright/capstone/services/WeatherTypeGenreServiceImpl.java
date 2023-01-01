@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class WeatherTypeGenreServiceImpl {
+public class WeatherTypeGenreServiceImpl implements WeatherTypeGenreService {
     @Autowired
     private WeatherTypeRepository weatherTypeRepository;
     @Autowired
@@ -20,6 +20,7 @@ public class WeatherTypeGenreServiceImpl {
     @Autowired
     private WeatherTypeGenreRepository weatherTypeGenreRepository;
 
+    @Override
     @Transactional
     public void addWeatherTypeGenre(WeatherTypeGenreDto weatherTypeGenreDto, Long weatherTypeId, Long genreId) {
         Optional<WeatherType> weatherTypeOptional = weatherTypeRepository.findById(weatherTypeId);
@@ -30,6 +31,7 @@ public class WeatherTypeGenreServiceImpl {
         weatherTypeGenreRepository.saveAndFlush(weatherTypeGenre);
     }
 
+    @Override
     @Transactional
     public void deleteWeatherTypeGenreById(Long weatherTypeGenreId) {
         Optional<WeatherTypeGenre> weatherTypeGenreOptional = weatherTypeGenreRepository.findById(weatherTypeGenreId);
