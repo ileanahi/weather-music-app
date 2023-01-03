@@ -8,4 +8,7 @@ import java.util.List;
 public interface GenreService {
     @Transactional
     List<String> addGenre(GenreDto genreDto);
+
+    @Transactional
+    void deleteGenreById(Long genreId);
 }

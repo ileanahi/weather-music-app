@@ -8,4 +8,7 @@ import java.util.List;
 public interface SongService {
     @Transactional
     List<String> addSong(SongDto songDto);
+
+    @Transactional
+    void deleteSongById(Long songId);
 }

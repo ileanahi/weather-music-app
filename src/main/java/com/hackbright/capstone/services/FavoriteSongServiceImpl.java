@@ -24,6 +24,7 @@ public class FavoriteSongServiceImpl implements FavoriteSongService {
     @Autowired
     private FavoriteSongRepository favoriteSongRepository;
 
+    @Override
     @Transactional
     public void addFavoriteSong(FavoriteSongDto favoriteSongDto, Long userId, Long songId) {
         Optional<User> userOptional = userRepository.findById(userId);
@@ -34,6 +35,7 @@ public class FavoriteSongServiceImpl implements FavoriteSongService {
         favoriteSongRepository.saveAndFlush(favoriteSong);
     }
 
+    @Override
     @Transactional
     public void deleteFavoriteSongById(Long favoriteSongId) {
         Optional<FavoriteSong> favoriteSongOptional = favoriteSongRepository.findById(favoriteSongId);
