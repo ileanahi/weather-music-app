@@ -1,6 +1,6 @@
 package com.hackbright.capstone.dtos;
 
-import com.hackbright.capstone.entities.FavoriteSong;
+/*import com.hackbright.capstone.entities.FavoriteSong;*/
 import com.hackbright.capstone.entities.Song;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +18,7 @@ public class SongDto implements Serializable {
     private String title;
     private String artist;
     private String albumArt;
-    private Set<FavoriteSongDto> favoriteSongDtoSet = new HashSet<>();
+    /*private Set<FavoriteSongDto> favoriteSongDtoSet = new HashSet<>();*/
 
     public SongDto(Song song) {
         if (song.getId() != null) {

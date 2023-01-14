@@ -1,3 +1,4 @@
+/*
 package com.hackbright.capstone.repositories;
 
 import com.hackbright.capstone.entities.FavoriteSong;
@@ -11,3 +12,4 @@ import java.util.List;
 public interface FavoriteSongRepository extends JpaRepository<FavoriteSong, Long> {
     List<FavoriteSong> findAllByUserEquals(User user);
 }
+*/

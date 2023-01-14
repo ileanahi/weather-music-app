@@ -38,9 +38,9 @@ public class User {
     @Column
     private String role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+/*    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonBackReference
-    private Set<FavoriteSong> favoriteSong = new HashSet<>();
+    private Set<FavoriteSong> favoriteSong = new HashSet<>();*/
 
     public User(UserDto userDto) {
         if (userDto.getUsername() != null) {

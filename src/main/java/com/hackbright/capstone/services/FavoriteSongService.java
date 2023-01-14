@@ -1,3 +1,4 @@
+/*
 package com.hackbright.capstone.services;
 
 import com.hackbright.capstone.dtos.FavoriteSongDto;
@@ -19,3 +20,4 @@ public interface FavoriteSongService {
     @Transactional
     Optional<FavoriteSongDto> getFavoriteSongById(Long favoriteSongId);
 }
+*/

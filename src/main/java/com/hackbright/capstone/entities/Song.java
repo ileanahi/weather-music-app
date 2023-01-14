@@ -25,8 +25,8 @@ public class Song {
     @Column
     private String albumArt;
 
-    @OneToOne(mappedBy = "song")
-    private FavoriteSong favoriteSong;
+/*    @OneToOne(mappedBy = "song")
+    private FavoriteSong favoriteSong;*/
 
     public Song(SongDto songDto) {
         if (songDto.getTitle() != null) {

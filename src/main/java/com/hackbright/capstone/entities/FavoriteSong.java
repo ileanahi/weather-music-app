@@ -1,3 +1,4 @@
+/*
 package com.hackbright.capstone.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -25,3 +26,4 @@ public class FavoriteSong {
     @JoinColumn(name = "song_id", referencedColumnName = "id")
     private Song song;
 }
+*/
