@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SongService {
     @Transactional
-    List<String> addSong(SongDto songDto);
+    List<String> addSong(SongDto songDto, Long userId);
 
     @Transactional
     void deleteSongById(Long songId);

@@ -1,6 +1,7 @@
 package com.hackbright.capstone.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackbright.capstone.dtos.UserDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,9 +39,9 @@ public class User {
     @Column
     private String role;
 
-/*    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JsonBackReference
-    private Set<FavoriteSong> favoriteSong = new HashSet<>();*/
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonManagedReference
+    private Set<Song> songSet = new HashSet<>();
 
     public User(UserDto userDto) {
         if (userDto.getUsername() != null) {

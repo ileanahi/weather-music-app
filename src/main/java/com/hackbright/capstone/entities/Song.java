@@ -1,5 +1,6 @@
 package com.hackbright.capstone.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.hackbright.capstone.dtos.SongDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,10 @@ public class Song {
     @Column
     private String albumArt;
 
-/*    @OneToOne(mappedBy = "song")
-    private FavoriteSong favoriteSong;*/
+    @ManyToOne
+    @JsonBackReference
+    private User user;
+
 
     public Song(SongDto songDto) {
         if (songDto.getTitle() != null) {

@@ -20,7 +20,7 @@ public class UserDto implements Serializable {
     private String password;
     private String location;
     private String role;
-    /*private Set<FavoriteSongDto> favoriteSongDtoSet = new HashSet<>();*/
+    private Set<SongDto> songDtoSet = new HashSet<>();
 
     public UserDto(User user) {
         if (user.getId() != null){

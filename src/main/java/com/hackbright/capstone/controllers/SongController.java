@@ -5,17 +5,15 @@ import com.hackbright.capstone.services.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("api/v1/songs")
 public class SongController {
     @Autowired
     private SongService songService;
 
-    @PostMapping("/newSong")
-    public List<String> addSong(@RequestBody SongDto songDto) {
-        return songService.addSong(songDto);
+    @PostMapping("/user/{userId}")
+    public void addSong(@RequestBody SongDto songDto,@PathVariable Long userId){
+        songService.addSong(songDto, userId);
     }
 
     @DeleteMapping("/deleteSong")

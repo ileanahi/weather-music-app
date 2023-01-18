@@ -18,7 +18,7 @@ public class SongServiceImpl implements SongService {
 
     @Override
     @Transactional
-    public List<String> addSong(SongDto songDto) {
+    public List<String> addSong(SongDto songDto, Long userId) {
         List<String> response = new ArrayList<>();
         Song song = new Song(songDto);
         songRepository.saveAndFlush(song);
