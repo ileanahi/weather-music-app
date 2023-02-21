@@ -2,7 +2,7 @@
 
 This is a project for the HackBright Academy Java Bootcamp. This Spring Boot Java program displays music based on the weather in your local area.
 
-![Weather Jamz](ileanahi/weather-music-app/blob/main/src/main/resources/static/img/weatherjamz.png "Home page")
+![Weather Jamz](/ileanahi/weather-music-app/blob/main/src/main/resources/static/img/weatherjamz.png "Home page")
 
 ## Getting Started
 Download this repository, create a new database and update the application properties file.
