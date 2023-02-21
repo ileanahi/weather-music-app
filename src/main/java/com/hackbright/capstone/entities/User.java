@@ -1,6 +1,5 @@
 package com.hackbright.capstone.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.hackbright.capstone.dtos.UserDto;
 import jakarta.persistence.*;
@@ -27,21 +26,18 @@ public class User {
     @Column
     private String firstName;
 
-    @Column(unique = true)
-    private String email;
-
     @Column
     private String password;
 
-    @Column
-    private String location;
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
+    private Set<Song> songs;
 
-    @Column
-    private String role;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JsonManagedReference
-    private Set<Song> songSet = new HashSet<>();
+    public Set<Song> getSongs() {
+        return songs;
+    }
+    public void setSongs(Set<Song> patients) {
+            this.songs = songs;
+    }
 
     public User(UserDto userDto) {
         if (userDto.getUsername() != null) {
@@ -50,17 +46,8 @@ public class User {
         if (userDto.getFirstName() != null) {
             this.firstName = userDto.getFirstName();
         }
-        if (userDto.getEmail() != null) {
-            this.email = userDto.getEmail();
-        }
         if (userDto.getPassword() != null) {
             this.password = userDto.getPassword();
-        }
-        if (userDto.getLocation() != null) {
-            this.location = userDto.getLocation();
-        }
-        if (userDto.getRole() != null) {
-            this.role = userDto.getRole();
         }
     }
 }

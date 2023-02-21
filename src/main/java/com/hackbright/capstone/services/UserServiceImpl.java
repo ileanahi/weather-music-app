@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +46,11 @@ public class UserServiceImpl implements UserService {
             response.add("User Login Failed");
         }
         return response;
+    }
+
+    @Override
+    public Optional<UserDto> getUserById(@PathVariable Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        return userOptional.map(UserDto::new);
     }
 }

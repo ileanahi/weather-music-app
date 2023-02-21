@@ -11,7 +11,7 @@ const headers = {
 const baseUrl = "http://localhost:8080/api/v1/songs/"
 
 async function addSong(obj) {
-    const response = await fetch(`${baseUrl}user/${userId}`, {
+    const response = await fetch(`${baseUrl}favorite-song/${userId}`, {
         method: "POST",
         body: JSON.stringify(obj),
         headers: headers

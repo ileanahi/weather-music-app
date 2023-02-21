@@ -15,7 +15,6 @@ public class SongDto implements Serializable {
     private String title;
     private String artist;
     private String albumArt;
-    private UserDto userDto;
 
     public SongDto(Song song) {
         if (song.getId() != null) {

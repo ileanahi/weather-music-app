@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface SongService {
     @Transactional
-    List<String> addSong(SongDto songDto, Long userId);
+    List<String> addSong(Long userId, SongDto songDto);
 
     @Transactional
     void deleteSongById(Long songId);
+
+    List<SongDto> getAllSongs();
 }

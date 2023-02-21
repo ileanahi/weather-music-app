@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Genres")
 @Data
@@ -19,8 +21,8 @@ public class Genre {
     @Column
     private String type;
 
-    @OneToOne(mappedBy = "genre")
-    private WeatherTypeGenre weatherTypeGenre;
+    @OneToMany(mappedBy = "genre")
+    private Set<WeatherType> weatherTypes;
 
     public Genre(GenreDto genreDto) {
         if (genreDto.getType() != null) {

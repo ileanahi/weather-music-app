@@ -1,5 +1,6 @@
 package com.hackbright.capstone.dtos;
 
+import com.hackbright.capstone.entities.Genre;
 import com.hackbright.capstone.entities.WeatherType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,14 +13,19 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class WeatherTypeDto implements Serializable {
     private Long id;
-    private String weatherType;
+    private String type;
+
+    private Genre genre;
 
     public WeatherTypeDto(WeatherType weatherType) {
         if (weatherType.getId() != null) {
             this.id = weatherType.getId();
         }
-        if (weatherType.getWeatherType() != null) {
-            this.weatherType = weatherType.getWeatherType();
+        if (weatherType.getType() != null) {
+            this.type = weatherType.getType();
+        }
+        if(weatherType.getGenre() != null){
+            this.genre = weatherType.getGenre();
         }
     }
 }

@@ -7,8 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("api/v1/weatherTypes")
 public class WeatherTypeController {
     @Autowired
@@ -22,5 +23,10 @@ public class WeatherTypeController {
     @DeleteMapping("/deleteWeatherType")
     public void deleteWeatherTypeById(@PathVariable Long weatherTypeId) {
         weatherTypeService.deleteWeatherTypeById(weatherTypeId);
+    }
+
+    @GetMapping("/{weatherType}")
+    public Optional<WeatherTypeDto> getWeatherTypeByType(@PathVariable String weatherType) {
+        return weatherTypeService.getWeatherTypeByType(weatherType);
     }
 }

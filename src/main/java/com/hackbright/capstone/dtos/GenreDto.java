@@ -15,7 +15,8 @@ import java.util.Set;
 public class GenreDto implements Serializable {
     private Long id;
     private String type;
-    private Set<WeatherTypeGenreDto> weatherTypeGenreDtoSet = new HashSet<>();
+
+    private Genre genre;
 
     public GenreDto(Genre genre) {
         if (genre.getId() != null) {

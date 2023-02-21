@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "WeatherTypes")
 @Data
@@ -17,11 +19,18 @@ public class WeatherType {
     private Long id;
 
     @Column
-    private String weatherType;
+    private String type;
+
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
 
     public WeatherType(WeatherTypeDto weatherTypeDto) {
-        if (weatherTypeDto.getWeatherType() != null) {
-            this.weatherType = weatherTypeDto.getWeatherType();
+        if (weatherTypeDto.getType() != null) {
+            this.type = weatherTypeDto.getType();
+        }
+        if (weatherTypeDto.getGenre() != null) {
+            this.genre = weatherTypeDto.getGenre();
         }
     }
 }

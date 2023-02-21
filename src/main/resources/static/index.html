@@ -6,56 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/f820d70650.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&family=Space+Mono&display=swap" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet" />
 </head>
-<body>
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Weather Jamz</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Weather Jamz</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register.html">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login.html">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-danger navbar-btn" href="./login.html" onclick="handleLogout()">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<body class="vh-100">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Weather Jamz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger navbar-btn" href="./login.html" onclick="handleLogout()">Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
-    <div class="container-fluid bg-dark">
-        <div class="row">
-            <div class="col-6">
-                <p id="location" class="text-white">City name</p>
-                <p id="temp" class="fs-1 text-white">Temperature</p><p id="degrees"></p>
-                <p id="weatherType" class="text-white-50 fs-3">Weather Type</p>
-                <img src="" alt="" id="weatherIcon" />
+    <main class="container-fluid h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-6 bg-light d-flex flex-column weather-info justify-content-center align-items-center m-3">
+                <div>
+                    <img src="" alt="" id="weatherIcon" />
+                </div>
+                <div class="text-center">
+                    <p id="location">City name</p>
+                    <p id="temp" class="fs-1">Temperature</p><p id="degrees"></p>
+                    <p id="weatherType" class="fs-3">Weather Type</p>
+                </div>
             </div>
 
-            <img src="" id="albumCover" alt="" />
-            <p id="title"></p>
-            <p id="artists"></p>
-            <button id='play'><i class="fa-solid fa-play"></i></button>
-            <button id='pause'><i class="fa-solid fa-pause"></i></button>
-            <button id='stop'><i class="fa-solid fa-stop"></i></button>
-            <button id="favoriteSong" onclick="handleFavorite()"><i class="fa-regular fa-heart"></i></button>
+            <div class="music bg-light col-3 m-3">
+                <div class="text-center">
+                    <img src="" id="albumCover" alt="" />
+                    <p id="title"></p>
+                    <p id="artists"></p>
+                </div>
+                <div class="text-center">
+                    <button id='play' class="btn"><i class="fa-solid fa-play"></i></button>
+                    <button id='pause'class="btn"><i class="fa-solid fa-pause"></i></button>
+                    <button id='stop' class="btn"><i class="fa-solid fa-stop"></i></button>
+                    <button id="favoriteSong" onclick="handleFavorite()" class="btn"><i class="fa-regular fa-heart"></i></button>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/howler@2.2.3/dist/howler.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

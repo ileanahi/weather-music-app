@@ -3,10 +3,12 @@ if ('geolocation' in navigator) {
     const openWeatherMapApi = config.OPEN_WEATHER_MAP_API_KEY;
     const lon = position.coords.longitude;
     const lat = position.coords.latitude;
-    const musicGenre = "POP";
+    let musicGenre = "";
     const locationUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${openWeatherMapApi}`;
     let weatherUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${openWeatherMapApi}`;
-    let musicUrl = `https://shazam-core.p.rapidapi.com/v1/charts/genre-world?genre_code=${musicGenre}`;
+    let musicUrl = `https://shazam-core.p.rapidapi.com/v1/charts/genre-world?genre_code=`;
+    const baseUrl = `http://localhost:8080/api/v1/weatherTypes/`;
+    let weather = "";
 
     async function getWeather() {
         let response = await fetch(weatherUrl);
@@ -16,6 +18,14 @@ if ('geolocation' in navigator) {
 
     async function getLocation() {
         let response = await fetch(locationUrl);
+        let data = await response.json();
+        return data;
+    }
+
+    async function getWeatherGenre() {
+        console.log(weather);
+        const weatherGenreUrl = baseUrl + weather;
+        let response = await fetch(weatherGenreUrl);
         let data = await response.json();
         return data;
     }
@@ -33,6 +43,13 @@ if ('geolocation' in navigator) {
         return data;
     }
 
+    getLocation()
+        .then(data => {
+                const location = document.getElementById("location");
+                location.innerText = data[0].name;
+            }
+        );
+
     getWeather()
         .then(data => {
             const temp = document.getElementById("temp");
@@ -42,37 +59,36 @@ if ('geolocation' in navigator) {
             weatherType.innerText = data.current.weather[0].main;
             weatherIcon.src = `http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
             weatherIcon.alt = data.current.weather[0].main;
-        });
+            weather = data.current.weather[0].main.toLowerCase();
 
-    getLocation()
-        .then(data => {
-                const location = document.getElementById("location");
-                location.innerText = data[0].name;
-            }
-        );
+           getWeatherGenre()
+                .then(data => {
+                    musicUrl = musicUrl + data.genre.type;
 
-    getMusic()
-        .then(data => {
-            const audio = document.getElementById("audio");
-            const albumCover = document.getElementById("albumCover");
-            const artists = document.getElementById("artists");
-            const title = document.getElementById("title");
-            const uri = data[0]?.hub?.actions[1]?.uri;
+                    getMusic()
+                        .then(data => {
+                            const audio = document.getElementById("audio");
+                            const albumCover = document.getElementById("albumCover");
+                            const artists = document.getElementById("artists");
+                            const title = document.getElementById("title");
+                            const uri = data[0]?.hub?.actions[1]?.uri;
 
-            albumCover.src = data[0].images?.coverart;
-            artists.innerText = data[0].subtitle;
-            title.innerText = data[0].title;
+                            albumCover.src = data[0].images?.coverart;
+                            artists.innerText = data[0].subtitle;
+                            title.innerText = data[0].title;
 
-            let sound = new Howl({
-                src: [uri],
-                volume: 0.5
-            });
+                            let sound = new Howl({
+                                src: [uri],
+                                volume: 0.5
+                            });
 
-            const play = document.getElementById("play");
-            const pause = document.getElementById("pause");
+                            const play = document.getElementById("play");
+                            const pause = document.getElementById("pause");
 
-            play.onclick = () => sound.play();
-            pause.onclick = () => sound.pause();
+                            play.onclick = () => sound.play();
+                            pause.onclick = () => sound.pause();
+                        });
+           });
         });
   };
 
